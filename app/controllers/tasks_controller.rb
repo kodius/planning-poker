@@ -63,6 +63,15 @@ class TasksController < ApplicationController
     end
   end
 
+  def add_guest
+    return if params[:guest].blank? || params[:guest][:email].blank?
+    guest = Guest.new
+    guest.email = params[:guest][:email]
+    guest.task_id = params[:task_id]
+    guest.save!
+    redirect_to :back
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_task
@@ -71,6 +80,6 @@ class TasksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
-      params.require(:task).permit(:title, :description, :task_creator_id)
+      params.require(:task).permit(:title, :description, :task_creator_id, guests: [:email])
     end
 end

@@ -8,5 +8,5 @@ class TaskCreator < ApplicationRecord
   validates_presence_of :last_name
 
   has_many :tasks
-  has_many :guests
+  has_many :guests, through: :task
 end

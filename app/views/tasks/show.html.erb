@@ -1,4 +1,23 @@
 <p id="notice"><%= notice %></p>
 
+title: <%= @task.title %>
+</br>
+description: <%= @task.description %>
+</br>
+guest emails: <%= @task.guest_emails %>
+</br>
+<%= form_for :guest, url: '/add-guest-to-task' do |f| %>
+  <%= hidden_field_tag :task_id, @task.id %>
+  <!-- TODO dodat validacije da mora bit email -->
+  Add guest email: <%= f.text_field :email %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<!-- TODO tu sam stao, sad treba napravit da task ode u stanje glasanja, poslat se mailovi guestovima i onda pocinje glasanje -->
+<%= link_to 'Invite guests and create a PPoker Session', invite_guests_to_ppoker_session_path %>
+
 <%= link_to 'Edit', edit_task_path(@task) %> |
 <%= link_to "Back", :back %>

@@ -7,4 +7,5 @@ Rails.application.routes.draw do
 
   resource :task
   get '/all-tasks', to: 'tasks#index', as: :all_tasks
+  post '/add-guest-to-task', to: 'tasks#add_guest', as: :add_guest
 end
