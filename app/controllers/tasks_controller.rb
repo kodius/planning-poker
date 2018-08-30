@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:show, :edit, :update, :destroy]
+  before_action :set_task, only: [:show, :edit, :update, :destroy, :invite_guests]
   before_action :authenticate_task_creator!
 
   # GET /tasks
@@ -72,10 +72,14 @@ class TasksController < ApplicationController
     redirect_to :back
   end
 
+  def invite_guests
+    # send emails
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_task
-      @task = Task.find(params[:format])
+      @task = current_task_creator.tasks.find(params[:format])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

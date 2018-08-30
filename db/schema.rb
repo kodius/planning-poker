@@ -10,15 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180826085420) do
+ActiveRecord::Schema.define(version: 20180830204611) do
 
   create_table "guests", force: :cascade do |t|
     t.integer  "task_id"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.boolean  "invited",    default: false
+    t.datetime "invited_at"
   end
 
   create_table "task_creators", force: :cascade do |t|

@@ -17,7 +17,10 @@ guest emails: <%= @task.guest_emails %>
 <% end %>
 
 <!-- TODO tu sam stao, sad treba napravit da task ode u stanje glasanja, poslat se mailovi guestovima i onda pocinje glasanje -->
-<%= link_to 'Invite guests and create a PPoker Session', invite_guests_to_ppoker_session_path %>
+<%= button_to 'Invite guests and create a PPoker Session',
+              invite_guests_to_ppoker_session_path,
+              method: :get, params: { format: @task.id } %>
+<br/>
 
 <%= link_to 'Edit', edit_task_path(@task) %> |
 <%= link_to "Back", :back %>
